@@ -1,12 +1,16 @@
 import React from 'react'
 
-const Transaction = () => {
+const Transaction = ({ posted_at, description, category, amount }) => {
   return (
     <tr>
-      <td>{"...your code here"}</td>
-      <td>{"...your code here"}</td>
-      <td>{"...your code here"}</td>
-      <td>{"...your code here"}</td>
+      <td>{posted_at}</td>
+      <td>{description}</td>
+      <td>{category}</td>
+      <td>
+        <span style={{'color': amount < 0 ? 'red' : 'green'}}>
+          ${(amount / 100).toFixed(2)}
+        </span>
+      </td>
     </tr>
   )
 }
