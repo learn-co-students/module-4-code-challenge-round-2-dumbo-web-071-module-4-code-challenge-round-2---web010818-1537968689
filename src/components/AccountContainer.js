@@ -8,7 +8,8 @@ class AccountContainer extends Component {
   constructor() {
     super()
     this.state = {
-      allTransactions: []
+      allTransactions: [],
+      filteredTransactions: []
     }
     // get a default state working with the data imported from TransactionsData
     // use this to get the functionality working
@@ -22,15 +23,25 @@ class AccountContainer extends Component {
     .then(r => this.setState({ allTransactions: r}))
   }
 
-  handleChange(event) {
-    // your code here
+  handleChange = (event) => {
+    const searchAll = this.state.allTransactions
+    const filteredArr = searchAll.filter(transaction => transaction.description.includes(event.target.value))
+
+    this.setState({
+      filteredTransactions: filteredArr
+    })
+
+  }
+
+  allTransactions(filteredArr) {
+    return filteredArr
   }
 
   render() {
     return (
       <div>
-        <Search />
-        <TransactionsList allTransactions={this.state.allTransactions}/>
+        <Search handleChange={this.handleChange}/>
+        <TransactionsList allTransactions={this.state.filteredTransactions}/>
       </div>
     )
   }

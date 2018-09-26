@@ -30,7 +30,8 @@ const TransactionsList = (props) => {
         </tr>
 
         {props.allTransactions.map(thisTransaction => {
-          return <Transaction transaction={thisTransaction} />
+          return <Transaction transaction={thisTransaction}
+            key={thisTransaction.id}/>
         })}
 
       </tbody>

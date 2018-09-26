@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Transaction = (props) => {
-    console.log(props.transaction)
+    
   return (
     <tr>
       <td>{props.transaction.posted_at}</td>
