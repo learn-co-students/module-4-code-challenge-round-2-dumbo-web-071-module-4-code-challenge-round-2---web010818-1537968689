@@ -2,28 +2,31 @@ import React from 'react'
 
 const TransactionsList = () => {
 
+  // singleTransaction = () => {
+  //   props.transactions.map((transaction) => <Transaction transaction={transaction}/>)
+  // }
   return (
     <table className="ui celled striped padded table">
       <tbody>
         <tr>
           <th>
             <h3 className="ui center aligned header">
-              Posted At
+              posted
             </h3>
           </th>
           <th>
             <h3 className="ui center aligned header">
-              Description
+              description
             </h3>
           </th>
           <th>
             <h3 className="ui center aligned header">
-              Category
+              category
             </h3>
           </th>
           <th>
             <h3 className="ui center aligned header">
-              Amount
+              amount
             </h3>
           </th>
         </tr>
