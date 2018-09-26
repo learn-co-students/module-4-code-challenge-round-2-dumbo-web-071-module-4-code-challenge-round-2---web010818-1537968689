@@ -38,16 +38,22 @@ class AccountContainer extends Component {
   }
 
   handleClick = () =>{
-    let randArr = [[66,69,69,80],[66,79,79,80], [66,69,69,80,66,79,79,80], [66,79,84,83], [82,79,66,79,84,83],[100, 111, 110, 116, 32, 99, 108, 105, 99, 107, 32, 109, 101, 10], [116, 104, 101, 32, 114, 111, 98, 111, 116, 115, 32, 97, 114, 101, 32, 99, 111, 109, 105, 110, 103, 10]]
+    let randArr = [[66,69,69,80],[66,79,79,80], [66,69,69,80,66,79,79,80], [66,79,84,83], [82,79,66,79,84,83],[100, 111, 110, 116, 32, 99, 108, 105, 99, 107, 32, 109, 101, 10], [116, 104, 101, 32, 114, 111, 98, 111, 116, 115, 32, 97, 114, 101, 32, 99, 111, 109, 105, 110, 103, 10], [104, 105, 32, 116, 111, 110, 121, 47, 101, 114, 105, 99, 47, 110, 105, 107, 121]]
     let num = Math.floor(Math.random()*randArr.length)
     let charArr=randArr[num]
     let newArr = []
+    let  newNew=[]
     charArr.forEach(char=> {
-      if(char !== ","){
-        newArr.push(String.fromCharCode(char))
-      }
+      newArr.push(String.fromCharCode(char))
     })
-    alert(newArr.join())
+    newArr.forEach(x => console.log(x))
+    for (var i in newArr){
+      if (newArr[i] !== ","){
+        newNew.push(newArr[i])
+      }
+    }
+    newNew = newNew.join()
+    alert(newNew)
   }
 
 
