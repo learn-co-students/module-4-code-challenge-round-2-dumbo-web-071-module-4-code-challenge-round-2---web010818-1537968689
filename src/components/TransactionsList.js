@@ -1,6 +1,7 @@
 import React from 'react'
+import Transaction from './Transaction'
 
-const TransactionsList = () => {
+const TransactionsList = ({ transactions }) => {
 
   return (
     <table className="ui celled striped padded table">
@@ -28,7 +29,21 @@ const TransactionsList = () => {
           </th>
         </tr>
 
-        {"... your code here..."}
+        {
+          transactions.map(transaction => (
+            <Transaction key={transaction.id} {...transaction} />
+          ))
+        }
+
+        <tr style={{ fontWeight: 'bold' }}>
+          <td colSpan={3}>Total</td>
+          <td>
+            {
+             (transactions.reduce((accum, {amount}) => (accum + amount), 0) / 100).toFixed(2)
+            }
+          </td>
+        </tr>
+
 
       </tbody>
     </table>
