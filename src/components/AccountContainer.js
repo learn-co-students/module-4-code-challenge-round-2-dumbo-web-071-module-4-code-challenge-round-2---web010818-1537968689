@@ -5,25 +5,39 @@ import {transactions} from '../transactionsData'
 
 class AccountContainer extends Component {
 
-  constructor() {
-    super()
+  constructor(props){
+    super(props)
 
-    // get a default state working with the data imported from TransactionsData
-    // use this to get the functionality working
-    // then replace the default transactions with a call to the API
+    this.state={
+      filterTerm: ""
+    }
 
   }
 
-  handleChange(event) {
-    // your code here
+  handleChange = (event) => {
+    // console.log(event.target.value);
+    this.setState({filterTerm: event.target.value})
+  }
+
+  //not case senstivie!
+  filterTransactionList = () => {
+    if (this.state.filterTerm !== "") {
+      return this.props.transactions.filter(transaction => transaction.category.includes(this.state.filterTerm) || transaction.description.includes(this.state.filterTerm))
+    }
+    else {
+      return this.props.transactions
+    }
   }
 
   render() {
-
+    // console.log(this.props)
+    console.log(this.state.filterTerm)
     return (
       <div>
-        <Search />
-        <TransactionsList />
+        <Search handleChange={this.handleChange}
+          search={this.state.filterTerm}
+        />
+        <TransactionsList transactions={this.filterTransactionList()}/>
       </div>
     )
   }
