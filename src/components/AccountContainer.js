@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
 import TransactionsList from './TransactionsList'
 import Search from './Search'
-// import {transactions} from '../transactionsData'
+import {transactions} from '../transactionsData'
 
 class AccountContainer extends Component {
 
   constructor() {
     super()
     this.state = {
-      allTransactions: [],
+      allTransactions: transactions,
       filteredTransactions: []
     }
-    // get a default state working with the data imported from TransactionsData
-    // use this to get the functionality working
-    // then replace the default transactions with a call to the API
-
   }
 
   componentDidMount() {
@@ -25,14 +21,12 @@ class AccountContainer extends Component {
 
   handleChange = (event) => {
     const searchAll = this.state.allTransactions
+
     const filteredArr = searchAll.filter(transaction => transaction.description.toLowerCase().includes(event.target.value.toLowerCase()))
+
     this.setState({
       filteredTransactions: filteredArr
     })
-  }
-
-  allTransactions(filteredArr) {
-    return filteredArr
   }
 
   render() {

@@ -29,11 +29,10 @@ const TransactionsList = (props) => {
           </th>
         </tr>
 
-        {props.allTransactions.map(thisTransaction => {
-          return <Transaction transaction={thisTransaction}
-            key={thisTransaction.id}/>
+        {props.allTransactions.map(transaction => {
+          return <Transaction transaction={transaction}
+            key={transaction.id}/>
         })}
-
       </tbody>
     </table>
   )
