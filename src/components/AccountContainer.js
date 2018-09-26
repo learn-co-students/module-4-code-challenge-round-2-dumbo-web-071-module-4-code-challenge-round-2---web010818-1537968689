@@ -8,9 +8,6 @@ class AccountContainer extends Component {
   constructor(props){
     super(props)
 
-    // get a default state working with the data imported from TransactionsData
-    // use this to get the functionality working
-    // then replace the default transactions with a call to the API
     this.state={
       filterTerm: ""
     }
@@ -22,16 +19,10 @@ class AccountContainer extends Component {
     this.setState({filterTerm: event.target.value})
   }
 
-  //code kept breaking with my handleChange function so
-  // didn't get to test this out in the browser but this
-  // is how I would have gone about filtering transactions.
-  //i would have then passed this function as a prop to
-  //TransactionsList
+  //not case senstivie!
   filterTransactionList = () => {
     if (this.state.filterTerm !== "") {
-      return this.props.transactions.filter(transaction => {
-        return transaction.category.includes(this.state.filterTerm) || transaction.description.includes(this.state.filterTerm)
-      })
+      return this.props.transactions.filter(transaction => transaction.category.includes(this.state.filterTerm) || transaction.description.includes(this.state.filterTerm))
     }
     else {
       return this.props.transactions
@@ -39,14 +30,14 @@ class AccountContainer extends Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     console.log(this.state.filterTerm)
     return (
       <div>
         <Search handleChange={this.handleChange}
           search={this.state.filterTerm}
         />
-        <TransactionsList transactions={this.props.transactions}/>
+        <TransactionsList transactions={this.filterTransactionList()}/>
       </div>
     )
   }
