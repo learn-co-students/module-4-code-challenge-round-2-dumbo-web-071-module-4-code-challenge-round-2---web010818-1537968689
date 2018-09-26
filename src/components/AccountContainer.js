@@ -25,7 +25,7 @@ class AccountContainer extends Component {
 
   handleChange = (event) => {
     const searchAll = this.state.allTransactions
-    const filteredArr = searchAll.filter(transaction => transaction.description.includes(event.target.value))
+    const filteredArr = searchAll.filter(transaction => transaction.description.toLowerCase().includes(event.target.value.toLowerCase()))
     this.setState({
       filteredTransactions: filteredArr
     })
